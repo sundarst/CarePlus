@@ -2,10 +2,22 @@ package careplus.zsgs.dto;
 
 public class PatientManagement {
 	
+	private int id;
 	private String name;
 	private String age;
 	private String contactNumber;
 	private String place;
+
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -42,6 +54,11 @@ public class PatientManagement {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public Appointment getAppointedDoctor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

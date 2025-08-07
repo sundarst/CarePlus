@@ -7,6 +7,8 @@ public class AdminUser {
 	private String userId;
 	private   String password;
 	
+
+
 	public String getName() {
 		return name;
 	}

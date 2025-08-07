@@ -1,24 +1,31 @@
 package careplus.zsgs.addDoctor;
-import  careplus.zsgs.db.CarePlusDb;
+
+import java.util.List;
+
+import careplus.zsgs.db.CarePlusDb;
 import careplus.zsgs.dto.Doctors;
 
 class DoctorModel {
-	
-	private  DoctorView view;
-	 DoctorModel( DoctorView view)
-	 {
-		 this.view=view;
-	 }
+
+	private DoctorView view;
+
+	DoctorModel(DoctorView view) {
+		this.view = view;
+	}
+
 	public void init() {
 		view.addDoctor();
-		
+
 	}
+
 	public void doctorInfo(Doctors doctors) {
-		CarePlusDb.getInstance().getDoctors();
-		view.doctorAddSuccessFuly("Doctor add succesfully");
+		 CarePlusDb.getInstance().setDoctors(doctors);
 		
+
 	}
 	 
-	 
+	
+
+	
 
 }

@@ -1,4 +1,5 @@
 package careplus.zsgs.addDoctor;
+import java.util.List;
 import java.util.Scanner;
 import careplus.zsgs.dto.Doctors;
 public class DoctorView {
@@ -12,28 +13,37 @@ public class DoctorView {
 	 
 	 public  void init()
 	 {
-		 model.init();
+		 model.init(); 
 	 }
 
 	public void addDoctor() {
-		Doctors doctors= new Doctors();
+		try
+		{
+		Doctors doctors = new Doctors();
+		
 		doctors.setName(getName());
 		doctors.setMobileNumber(getMobileNumber());
 		doctors.setAvailableTimeSlots(getAvailableTimeSlots() );
 		doctors.setSpecialization(getSpecialization());
 		model.doctorInfo(doctors);
-		
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error: "+e);
+		}
 	}
 	
+
+
 	private String getName()
 	{
 		String name="";
-		System.out.println("Entre your Name");
+		System.out.println("Entre Doctor Name");
 		do {
 			name=scanner.nextLine();
 			 if(name.length()<3|| name.length()>=50)
 			
-				System.out.println("Entre your name between min 3 to max 50\nEntre valid your name");
+				System.out.println("Entre Doctor name between min 3 to max 50\nEntre valid your name");
 			else break;
 		}    
 		while(true);
@@ -45,24 +55,31 @@ public class DoctorView {
 		System.out.println("Entre your Number");
 		do {
 			number=scanner.nextLine();
-			 if(number.matches("/d{10}")) 
-			
-				System.out.println("Mobile number Must me 10");
-			else break;
+			 if(number.matches("^\\d{10}$")) 
+			 { 
+				 break;
+			 }
+			else 
+			{
+				System.out.println("Mobile number must me 10 digits.");
+			}
 		}    
 		while(true);
 		return number;
 	}
-	private Long getAvailableTimeSlots() 
+	private String getAvailableTimeSlots() 
 	{
-		long slot=0;
-		System.out.println("Entre your Time");
+		String slot="";
+		System.out.println("Entre Avaliable slot(Morning,Afternoon,Evening)");
 		do {
-			slot=scanner.nextLong();
-			 if(slot <=1|| slot>=12) 
+			slot=scanner.nextLine().toLowerCase().trim();
 			
-				System.out.println("Enter the doctor avaliable time between 1 to 12");
-			else break;
+			 if(slot.equalsIgnoreCase("morning")||slot.equalsIgnoreCase("afternoon")||slot.equalsIgnoreCase("evening"))
+				 break;	
+			else 
+			{
+				System.out.println("Enter correct slot\nEntre Avaliable slot(Morning,Afternoon,Evening)");
+			}
 		}    
 		while(true);
 		return slot;
@@ -71,7 +88,7 @@ public class DoctorView {
 	private String getSpecialization()
 	{
 		String specialization ="";
-		//System.out.println("Entre your Name");
+		System.out.println("Entre your specialization");
 		do {
 			specialization=scanner.nextLine();
 			 if(specialization.length()<3|| specialization.length()>=50)
@@ -87,4 +104,8 @@ public class DoctorView {
 		System.out.println(string);
 		
 	}
+
+	
+	
+
 }
